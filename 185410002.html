@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+	<title>UTS - 185410002</title>
+  </head>
+  <!-- Oleh: 185410002 Muhammad Fachrur Rozi -->
+  <body>
+	  <img id="rozi" width="220" height="277"
+	  src="assets/rozi.jpg" alt="Rozi" hidden>
+	  <img id="rabbit" width="220" height="277"
+	  src="assets/rabbit.png" alt="Rabbit" hidden>
+    <canvas id="myCanvas" width="770" height="700" style="border:1px solid #d3d3d3;">
+	Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	<!-- img hidden agar html image tidak 
+	nampak di browser, namun canvas 
+	-->
+    <script>
+	window.onload = function() {
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+	  var img = document.getElementById("rozi");
+	  var img2 = document.getElementById("rabbit");
+	
+		//text dan gambar
+		context.font = "20px Arial";
+		context.strokeText("Ini adalah proyek UTS saya", 0, 350);
+		context.font = "20px Times New Roman";
+		context.fillText("Nama: Muhammad Fachrur Rozi", 0, 380);		
+		context.fillText("NIM: 185410002", 0, 410);
+		context.drawImage(img, 300, 320, 230, 300);
+		context.drawImage(img2, 10, 480, 100, 100);
+		
+		// Persegi panjang merah
+		context.beginPath();
+		context.lineWidth = "6";
+		context.strokeStyle = "#DC247A";
+		context.rect(25, 25, 220, 140);
+		context.stroke();
+		context.closePath();
+
+		// Lingkaran
+		context.beginPath();
+		context.transform(1, 0.5, -0.5, 1, 30, 10);
+		context.arc(140, 170, 50, 0, 2*Math.PI);
+		context.fillStyle = "#49C3D5";
+		context.fill();
+		context.lineWidth = "2";
+		context.strokeStyle = "#2C26C0";
+		context.stroke();
+		context.closePath();
+		
+		//segitiga
+		context.beginPath();
+		context.fillStyle = "#000000";
+		let height = 100 * Math.cos(Math.PI / 6);
+		context.moveTo(300, 20);
+		context.lineTo(270, 100);
+		context.lineTo(180, 120 - height);
+		context.closePath();
+		context.fill();
+		context.closePath();
+
+		// clip rectangle
+		context.beginPath();
+		context.lineWidth = "10";
+		context.strokeStyle = "#F9CA4B";
+		context.rect(60, 10, 150, 80);
+		context.stroke();
+		context.clip();
+		context.strokeStyle = "#26C02C";
+		context.rect(60, 15, 150, 80);
+		context.scale(5, 5);
+		context.stroke();
+		context.closePath();
+};
+    </script>
+  </body>
+</html>
